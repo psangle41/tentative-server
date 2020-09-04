@@ -12,7 +12,6 @@ import Ready from './Tabs/Ready';
 import All from './Tabs/All'
 
 
-
 const ServerScreen=({navigation})=>{
 
     
@@ -64,7 +63,7 @@ const ServerScreen=({navigation})=>{
                     
 
                 <View style={styles.ContainerTwo}>
-                    <TouchableOpacity><Image style={styles.menuImg}source= {require('../screens/img/menu.png')}/></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Split')}><Image style={styles.menuImg}source= {require('../screens/img/menu.png')}/></TouchableOpacity>
                     <Text style={{color: '#ffffff',fontFamily:"Poppins-Light",fontSize:19,lineHeight:29, left:0.12*windowWidth, top:10}}>54th Ave, Marques St..</Text>
                     <View style={{flexDirection:"row",top:35}}>
                         <View style={styles.titleTag}>

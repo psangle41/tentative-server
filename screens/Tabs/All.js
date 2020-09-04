@@ -8,11 +8,6 @@ import {orderStatus} from './Database'
 
 
 
-
-
-
-
-
 const All=()=>{
     
     const [selectedId, setSelectedId] = useState(null);
@@ -26,17 +21,17 @@ const All=()=>{
         return <AppLoading />;
       }
     const renderItem = ({ item }) => {
-        const backgroundColor = item.state === "Prep"? "#f7a500" : item.state === "Ready"?"#00b406":"#e81111";
+        const backgroundColor = item.state === "Prep"? "#f7a500" : item.state === "Ready"?"#00b406":"#e81156";
     
         return (
             <View style={styles.tabbContainer}>
-            <View style={styles.numberContainer}>
-                <Text style={{paddingRight:20}}>
+            <View style={styles.numberContainer }>
+                <Text style={{paddingRight:windowWidth*0.05, fontFamily:'Poppins-Light'}}>
                     {item.num}
                 </Text>
             </View>
             <View style={styles.statusBox}>
-                <View style={{height:windowHeight*0.13, width:windowWidth*0.015,backgroundColor:backgroundColor}} />
+                <View style={{height:windowHeight*0.127, width:windowWidth*0.015,backgroundColor:backgroundColor}} />
                 <Text style={{transform: [{ rotate: '270deg'}],fontFamily:'Poppins-Light',fontSize:12}}>{item.state}</Text>
             </View>
             <View style={styles.texxt}>
@@ -83,16 +78,16 @@ const styles=StyleSheet.create({
         borderBottomColor:'#a9a9a9',
         alignItems:'center',
         justifyContent:"center",
-        flexDirection:"row"
+        flexDirection:"row",
+        elevation:11
         
     },
     numberContainer:{
         position:"absolute",
-        top:windowHeight*0.02,
-        
-        width:windowWidth*0.2,
+        top:windowHeight*0.01,
+        width:windowWidth*0.23,
         backgroundColor: "#ffffff",
-        height:windowHeight*0.09,
+        height:windowHeight*0.108,
         borderTopWidth:2,
         borderBottomColor:'#a9a9a9',
         borderTopColor:'#a9a9a9',
@@ -102,8 +97,9 @@ const styles=StyleSheet.create({
         borderBottomColor:'#a9a9a9',
         alignItems:"flex-end",
         justifyContent:"center",
-        borderBottomRightRadius:40,
-        borderTopRightRadius:40
+        borderBottomRightRadius:50,
+        borderTopRightRadius:50,
+        elevation:10
     },
     texxt:{
         position:'absolute',

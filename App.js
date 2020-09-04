@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
+import SignInScreen from './screens/SignInScreen'
+import MainTabScreen from './screens/MainTabScreen'
 const Drawer = createDrawerNavigator();
 
-import MainTabScreen from './screens/MainTabScreen'
-import SignInScreen from './screens/SignInScreen'
+
+
 import {AuthContext} from './screens/context'
 
 const App = () => {
@@ -58,5 +60,7 @@ const App = () => {
     </AuthContext.Provider>
   );
 }
+
+
 
 export default App;

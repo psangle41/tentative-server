@@ -44,10 +44,10 @@ const SignInScreen=({navigation})=>{
             <View style={styles.container}>
                 <Image style ={styles.logo} source= {require('../screens/img/swiggy.png')}/>            
                 <Text style={styles.tagline}>Own the best Experience</Text>
-                <View style={styles.ipScreen} top={450} >
+                <View style={styles.ipScreen} top={windowHeight*0.58} >
                     <TextInput style ={styles.inputBox} placeholder="Username" placeholderTextColor="#000000" onChangeText={(val) => textInputChange(val)} />
                 </View>
-                <View style={styles.ipScreen} top={530}>
+                <View style={styles.ipScreen} top={windowHeight*0.68}>
                     <TextInput style ={styles.inputBox} placeholder="Password" placeholderTextColor="#000000" secureTextEntry={true}  onChangeText={(val) => handlePasswordChange(val)}  />
                 </View>
                 <TouchableOpacity  style={styles.button} onPress={()=>{loginHandle(data.username, data.password)}}>
@@ -64,9 +64,7 @@ const SignInScreen=({navigation})=>{
 const styles=StyleSheet.create({
     
     image:{
-        flex:1, 
-        
-         
+        flex:1,   
     },
     container:{
         flex:1,
@@ -78,7 +76,7 @@ const styles=StyleSheet.create({
         position: "absolute",
         width: 125,
         height: 184,
-        top: 120,
+        top: windowHeight*0.13,
         borderRadius: 3,
         borderColor: '#ffffff'
     },
@@ -86,7 +84,7 @@ const styles=StyleSheet.create({
         position: "absolute",
         width: 289,
         height: 55,
-        top: 388.35,
+        top: windowHeight*0.48,
         fontFamily: "Roboto",
         fontStyle: "normal",
         fontSize: 26,
@@ -99,8 +97,8 @@ const styles=StyleSheet.create({
     },
     ipScreen:{
         position: "absolute",
-        height:windowHeight*0.05,
-        width:windowWidth*0.1,
+        height:windowHeight*0.07,
+        width:windowWidth*0.8,
         borderStyle: "solid",
         borderColor:"#ffffff",
         borderWidth: 1.5,
@@ -111,8 +109,8 @@ const styles=StyleSheet.create({
     },
     inputBox:{
         position: "absolute",
-        height:windowHeight*0.05,
-        width:windowWidth*0.5,
+        height:windowHeight*0.07,
+        width:windowWidth*0.8,
         fontFamily: "Roboto",
         fontSize: 18,
         color:"#000000",
@@ -125,9 +123,9 @@ const styles=StyleSheet.create({
     },
     button:{
         position: "absolute",
-        height:windowHeight*0.05,
-        width:windowWidth*0.5,
-        top: 615,
+        height:windowHeight*0.07,
+        width:windowWidth*0.8,
+        top: windowHeight*0.83,
         fontFamily: "Roboto",
         fontSize: 18,
         color:"#000000",
@@ -143,7 +141,7 @@ const styles=StyleSheet.create({
         fontFamily: "Roboto",
         textAlign:"center",
         fontSize: 18,
-        lineHeight: 21,
+        lineHeight: 20,
         alignItems: 'center',
         justifyContent:"center",
         alignContent:"center",
