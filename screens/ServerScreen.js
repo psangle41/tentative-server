@@ -10,10 +10,12 @@ import NewOrder from './Tabs/NewOrder';
 import Preparingtab from './Tabs/Preparingtab';
 import Ready from './Tabs/Ready';
 import All from './Tabs/All'
+import ServerImg from './img/server'
+import Menu from './img/menu'
+
 
 
 const ServerScreen=({navigation})=>{
-
     
    const [tab, setTab] = React.useState(3);
    let [fontsLoaded] = useFonts({
@@ -28,7 +30,6 @@ const ServerScreen=({navigation})=>{
 
   font1=font2=font3=font4="#9a9795"
 
-    
     switch (tab) {
         case 0:{
         var  font1 = "#ffffff";
@@ -47,10 +48,6 @@ const ServerScreen=({navigation})=>{
             var leftShift=3*windowWidth/4;
             break;}
 
-        default:{
-            font1= "#9a9795";
-
-        }
       }
       if (!fontsLoaded) {
         return <AppLoading />;}
@@ -60,16 +57,14 @@ const ServerScreen=({navigation})=>{
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <View style={styles.ContainerOne}/>
-                    
-
                 <View style={styles.ContainerTwo}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Split')}><Image style={styles.menuImg}source= {require('../screens/img/menu.png')}/></TouchableOpacity>
+                    <TouchableOpacity ><Menu style={styles.menuImg}/></TouchableOpacity>
                     <Text style={{color: '#ffffff',fontFamily:"Poppins-Light",fontSize:19,lineHeight:29, left:0.12*windowWidth, top:10}}>54th Ave, Marques St..</Text>
                     <View style={{flexDirection:"row",top:35}}>
                         <View style={styles.titleTag}>
                             <Text style={{fontFamily:'Poppins-Light',color:'#ff264d',fontSize:19,lineHeight:29}}>Mike's cafe</Text>
                         </View>
-                        <Image style={styles.serverImg} source= {require('../screens/img/server.png')}/>
+                        <ServerImg style={{left: windowWidth*0.45}} />
                     </View>
                 </View>
             </View>
@@ -77,10 +72,8 @@ const ServerScreen=({navigation})=>{
             <View style={styles.statusContainer}>
                 <View style={styles.tabContainer}>
                     <View style={{flex:1,backgroundColor:'#ff264d',position:"absolute",top:windowHeight*0.005,width:windowWidth/4-5,height:windowHeight*0.05,left:leftShift,borderRadius:20}}/>
-
                     
-
-                    <TouchableOpacity style={styles.button} onPress = {() => setTab(0)} >
+                    <TouchableOpacity style={styles.button} onPress = {() => setTab(0)}> 
                         <Text style={{fontFamily:"Poppins-Light", fontSize:18, color:font1, textAlign:"center"}} >New Order</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress = {() => setTab(1)} >
@@ -114,7 +107,7 @@ const styles=StyleSheet.create({
     },
     ContainerOne:{
         flex:0.1,
-        backgroundColor:'#ffaacc',
+        backgroundColor:'#ffffff',
     },
     ContainerTwo:{
         flex:1,
@@ -130,8 +123,6 @@ const styles=StyleSheet.create({
         borderBottomLeftRadius:40,
     },
     menuImg:{
-        //width:0.095*windowWidth,
-        //height:0.07*windowHeight,
         top:0.015*windowHeight,
         left:0.85*windowWidth,
     },
@@ -155,13 +146,6 @@ const styles=StyleSheet.create({
         justifyContent:"center"
     },
     
-    titleContainer:{
-        flex:1,
-        backgroundColor:'#ffffff',
-        borderBottomRightRadius:40,
-        borderBottomLeftRadius:40,
-
-    },
     statusContainer:{
         flex:2
     },

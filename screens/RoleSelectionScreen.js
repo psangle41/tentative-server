@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Dimensions,TouchableOpacity,Switch} from 'react-native';
-
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
+import {AuthContext} from '../screens/context'
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-import LeftArrow from './img/leftArrow'
-import {CustomerOrder} from './Tabs/CustomerDatabase'
-
 
 const RoleSelectionScreen=({navigation})=>{
+    const { RoleSelected } = React.useContext(AuthContext)
 
     const [isEnabled, setIsEnabled] = useState(false);
     const [isEnabled1, setIsEnabled1] = useState(false);
@@ -18,6 +17,7 @@ const RoleSelectionScreen=({navigation})=>{
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
     const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
+    const isSelected=true
 
     let [fontsLoaded] = useFonts({
         "Poppins-Light": require('../assets/fonts/Poppins-Light.ttf'),
@@ -28,23 +28,6 @@ const RoleSelectionScreen=({navigation})=>{
       if (!fontsLoaded) {
         return <AppLoading />;
     }
-
-    const Roles=()=>{
-        return(
-            <View style={{width: windowWidth, height:30,flexDirection:"row",top:150,}}> 
-                <Text style={{fontFamily:'Poppins-Light',color:'#ff264d',fontSize:19,lineHeight:29,left:50}}>Server</Text>
-                <Switch
-                    trackColor={{ false: "#767577", true: "#ff264d" }}
-                    thumbColor={isEnabled ? "#ffffff" : "#c4c4c4"}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
-                    style={{width:90,height:30,left:80}}
-                />
-            </View>
-            
-        )
-    }
     
     
         return (
@@ -52,23 +35,61 @@ const RoleSelectionScreen=({navigation})=>{
                 <View style={styles.TitleContainer}>
                     
                 </View>
-                
-                <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
-                    <Text style={{fontFamily:'Poppins-Light',color:'#000000',fontSize:14,lineHeight:29,top:100}}>Please Select your Roles</Text>
-                    <Text style={{fontFamily:'Poppins-Light',color:'#000000',fontSize:14,lineHeight:29,top:100}}>Multiple selection is available</Text>
+                <View>
+                    <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+                        <Text style={{fontFamily:'Poppins-Light',color:'#000000',fontSize:14,lineHeight:29,marginTop:windowHeight*0.1}}>Please Select your Roles</Text>
+                        <Text style={{fontFamily:'Poppins-Light',color:'#000000',fontSize:14,lineHeight:29}}>Multiple selection is available</Text>
 
-                    <Roles issEnable={isEnabled} toggle={toggleSwitch}/>
-                    <Roles issEnable={isEnabled1} toggle={toggleSwitch1}/>
-                    <Roles issEnable={isEnabled2} toggle={toggleSwitch2}/>
-
-                    <TouchableOpacity >
-                        <View style={{width:150,height:51, backgroundColor:"#ff264d",top:300,borderRadius:40,justifyContent:"center",alignItems:"center"}}>
-                            <Text style={{fontFamily:'Poppins-Light',color:'#ffffff',fontSize:15,lineHeight:29,}}>Save</Text>
+                       
+                      <View style={{width: windowWidth, height:30,flexDirection:"row",marginTop:windowHeight*0.1}}> 
+                      <Text style={styles.roleText} >Server</Text>
+                      <Switch
+                            thumbColor='#ffffff'
+                            trackColor={{ false: "#767577", true: "#ff264d" }}
+                            thumbColor={isEnabled ? "#ffffff" : "#c4c4c4"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                            style={{width:90,height:30,left:80}}
+                        />
                         </View>
-                    </TouchableOpacity>
+                        <View style={styles.roleContainer}> 
+                      <Text style={styles.roleText}>chef</Text>
+                      <Switch
+                            thumbColor='#ffffff'
+                            trackColor={{ false: "#767577", true: "#ff264d" }}
+                            thumbColor={isEnabled1 ? "#ffffff" : "#c4c4c4"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={toggleSwitch1}
+                            value={isEnabled1}
+                            style={{width:90,height:30,left:98}}
+                        />
+                        </View>
+                        <View style={styles.roleContainer}> 
+                      <Text style={styles.roleText}>Billing</Text>
+                      <Switch
+                            thumbColor='#ffffff'
+                            trackColor={{ false: "#767577", true: "#ff264d" }}
+                            thumbColor={isEnabled2 ? "#ffffff" : "#c4c4c4"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={toggleSwitch2}
+                            value={isEnabled2}
+                            style={{width:90,height:30,left:89}}
+                        />
+                        </View>
+                        {isEnabled||isEnabled1||isEnabled2?
+                        
+                        <TouchableOpacity style={styles.saveButton}  onPress={()=>{RoleSelected(isSelected,isEnabled,isEnabled1,isEnabled2)}}>
+                            <Text style={styles.saveText}>save</Text> 
+                        </TouchableOpacity>:
+                        <TouchableOpacity style={styles.saveButton}>
+                        <Text style={styles.saveText}>save</Text> 
+                         </TouchableOpacity>
 
+                        }
+
+                    </View>
                 </View>
-                
              </View>
         );
     
@@ -84,16 +105,46 @@ const styles=StyleSheet.create({
         alignItems:'center',
         backgroundColor:'#ff264d',
         flexDirection:"row",
-borderBottomLeftRadius:20,
-borderBottomRightRadius:20    },
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20    
+    },
     title:{
-        fontFamily: 'Roboto',
+        fontFamily: 'Poppins-Light',
         color:'#ffffff',
         fontSize:24,
         lineHeight:28,
-        left:windowWidth*0.28
-        
+        left:windowWidth*0.28  
+    },
+    saveButton:{
+        width:windowWidth*0.25,
+        height:windowHeight*0.055,
+        marginTop:windowHeight*0.1,
+        backgroundColor:"#ff264d",
+        borderRadius:20,
+        justifyContent:'center',
+        alignItems:'center'
+
+    },
+    saveText:{
+        fontFamily: 'Poppins-Light',
+        color:'#ffffff',
+        fontSize:18,
+        lineHeight:28,
+    },
+    roleContainer:{
+        width: windowWidth, 
+        height:30,
+        flexDirection:"row",
+        marginTop:windowHeight*0.025
+    },
+    roleText:{
+        fontFamily:'Poppins-Light',
+        color:'#ff264d',
+        fontSize:19,
+        lineHeight:29,
+        left:50
     }
+
 })
 
 function useFonts(fontMap) {

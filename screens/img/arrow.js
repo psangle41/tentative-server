@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg,{Path} from 'react-native-svg'
 
-const LeftArrow=(props)=>{
+const Arrow=(props)=>{
     return(
         <Svg width={10} height={19} viewBox="0 0 10 19" fill="none" {...props}>
       <Path
@@ -12,4 +12,4 @@ const LeftArrow=(props)=>{
     )
 }
 
-export default LeftArrow;
+export default Arrow;

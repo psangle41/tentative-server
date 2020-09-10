@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView,FlatList,Dimensions} from 'react-native';
+import { StyleSheet, Text, View,FlatList,Dimensions,TouchableOpacity} from 'react-native';
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import {orderStatus} from './Database'
+import Arrow from '../img/arrow'
+
+
 
 
 
@@ -25,42 +28,48 @@ const All=()=>{
     
         return (
             <View style={styles.tabbContainer}>
-            <View style={styles.numberContainer }>
-                <Text style={{paddingRight:windowWidth*0.05, fontFamily:'Poppins-Light'}}>
-                    {item.num}
-                </Text>
-            </View>
-            <View style={styles.statusBox}>
-                <View style={{height:windowHeight*0.127, width:windowWidth*0.015,backgroundColor:backgroundColor}} />
-                <Text style={{transform: [{ rotate: '270deg'}],fontFamily:'Poppins-Light',fontSize:12}}>{item.state}</Text>
-            </View>
-            <View style={styles.texxt}>
-                <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
-                <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
+                <View style={styles.numberContainer}>
+                    <Text style={{paddingRight:20}}>
+                        {item.num}
+                    </Text>
+                </View>
+                <View style={styles.statusBox}>
+                    <View style={{height:windowHeight*0.15,width:windowWidth*0.016,backgroundColor:backgroundColor}} />
+                    <View style={{height:windowHeight*0.1,width:windowWidth*0.2,justifyContent:"center",alignItems:'center',left:-windowWidth*0.05}}>
+                        <Text style={{transform: [{ rotate: '270deg'}],fontFamily:'Poppins-Light',fontSize:18}}>{item.state}</Text>
+                    </View>
+                </View>
+                <TouchableOpacity style={styles.texxt} onPress = {() => console.log('bhg')}> 
+                    <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
+                    <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
 
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('Split')}> 
+                        <Arrow/>
+                </TouchableOpacity>
+                
+                
+                
             </View>
-            
-            
-        </View>
         );
       };
     
 
-    return(       
-            <FlatList
-                data={orderStatus}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                extraData={selectedId}
-            />
-    )
+      return(       
+        <FlatList
+            data={orderStatus}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            extraData={selectedId}
+        />
+)
 }
 
 const styles=StyleSheet.create({
     tabbContainer:{
         flex:1,
         backgroundColor: "#ffffff",
-        height:windowHeight*0.13,
+        height:windowHeight*0.15,
         borderBottomWidth:2,
         borderBottomColor:'#a9a9a9',
         flexDirection:'row'
@@ -68,18 +77,17 @@ const styles=StyleSheet.create({
     },
     
     statusBox:{
-        height:windowHeight*0.25,
-        width:windowWidth*0.1,
         backgroundColor: "#ffffff",
-        height:windowHeight*0.13,
+        alignItems:'center',
+        height:windowHeight*0.15,
+        width:windowWidth*0.13,
         borderBottomWidth:2,
         borderRightWidth:2,
         borderRightColor:'#a9a9a9',
         borderBottomColor:'#a9a9a9',
-        alignItems:'center',
-        justifyContent:"center",
-        flexDirection:"row",
-        elevation:11
+        backgroundColor:"#ffffff",
+        flexDirection:'row',  
+        elevation:10   
         
     },
     numberContainer:{
@@ -107,9 +115,7 @@ const styles=StyleSheet.create({
         left:100,
         backgroundColor: "#ffffff",
         height:windowHeight*0.13,
-        borderBottomWidth:2,
         borderRightColor:'#a9a9a9',
-        borderBottomColor:'#a9a9a9',
         justifyContent:"center",
         
     },

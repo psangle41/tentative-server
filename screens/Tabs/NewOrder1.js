@@ -7,11 +7,10 @@ import * as Font from "expo-font";
 import {orderStatus} from './Database'
 import Arrow from '../img/arrow'
 
-
-
-const NewOrder=()=>{
+const NewOrder1=()=>{
     const [selectedId, setSelectedId] = useState(null);
-    
+    const [expanded, setExpanded] = useState(false);
+    const [expanded1, setExpanded1] = useState(0);
     let [fontsLoaded] = useFonts({
         "Poppins-Light": require('../../assets/fonts/Poppins-Light.ttf'),
         "Inter-SemiBoldItalic":
@@ -25,7 +24,7 @@ const NewOrder=()=>{
 
       const renderItem = ({ item }) => {
         const backgroundColor = item.state === "Prep"? "#f7a500" : item.state === "Ready"?"#00b406":"#e81111";
-        
+
         return (
             item.state=="New"?
 
@@ -41,7 +40,7 @@ const NewOrder=()=>{
                         <Text style={{transform: [{ rotate: '270deg'}],fontFamily:'Poppins-Light',fontSize:18}}>{item.state}</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.texxt} >
+                <TouchableOpacity style={styles.texxt}>
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
                 </TouchableOpacity>
@@ -121,9 +120,7 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         
     },
-    expandText:{
-        marginLeft:5,padding:5,justifyContent:"center",backgroundColor:'#ff264d',borderRadius:20
-    }
+    
     
     
 })
@@ -137,4 +134,4 @@ function useFonts(fontMap) {
   }
 
 
-export default NewOrder;
+export default NewOrder1;

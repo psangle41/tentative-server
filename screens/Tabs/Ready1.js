@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList,Dimensions,TouchableOpacity,UIManager,LayoutAnimation} from 'react-native';
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { StyleSheet, Text, View, FlatList,Dimensions,TouchableOpacity,} from 'react-native';
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 import {orderStatus} from './Database'
 import Arrow from '../img/arrow'
 
 
 
-const NewOrder=()=>{
+
+
+
+const Ready1=({})=>{
     const [selectedId, setSelectedId] = useState(null);
-    
+    const [expanded, setExpanded] = useState(false);
+    const [expanded1, setExpanded1] = useState(0);
     let [fontsLoaded] = useFonts({
         "Poppins-Light": require('../../assets/fonts/Poppins-Light.ttf'),
         "Inter-SemiBoldItalic":
@@ -20,15 +24,13 @@ const NewOrder=()=>{
     
       if (!fontsLoaded) {
         return <AppLoading />;
+        
       }
-
-
       const renderItem = ({ item }) => {
         const backgroundColor = item.state === "Prep"? "#f7a500" : item.state === "Ready"?"#00b406":"#e81111";
-        
+       
         return (
-            item.state=="New"?
-
+            item.state=="Ready"?
             <View style={styles.tabbContainer}>
                 <View style={styles.numberContainer}>
                     <Text style={{paddingRight:20}}>
@@ -41,17 +43,15 @@ const NewOrder=()=>{
                         <Text style={{transform: [{ rotate: '270deg'}],fontFamily:'Poppins-Light',fontSize:18}}>{item.state}</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.texxt} >
+                <TouchableOpacity style={styles.texxt}>
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('AddCustom')}> 
+                <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}} onPress = {() => console.log('nbh')}> 
                         <Arrow/>
                 </TouchableOpacity>
-
+                            
             </View>
-            
-
             :null
         );
       };
@@ -121,10 +121,6 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         
     },
-    expandText:{
-        marginLeft:5,padding:5,justifyContent:"center",backgroundColor:'#ff264d',borderRadius:20
-    }
-    
     
 })
 function useFonts(fontMap) {
@@ -136,5 +132,4 @@ function useFonts(fontMap) {
     return [fontsLoaded];
   }
 
-
-export default NewOrder;
+export default Ready1;
