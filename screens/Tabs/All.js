@@ -32,7 +32,7 @@ const All=()=>{
         return (
             <View style={styles.tabbContainer}>
                 <View style={styles.numberContainer}>
-                    <Text style={{paddingRight:20}}>
+                <Text style={{paddingRight:20,fontSize:18,fontFamily:"Poppins-Light"}}>
                         {item.num}
                     </Text>
                 </View>
@@ -44,7 +44,7 @@ const All=()=>{
                 </View>
                 <TouchableOpacity style={styles.texxt} onPress = {() => console.log('bhg')}> 
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
-                    <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
+                    <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}/{item.amount}</Text>
 
                 </TouchableOpacity>
                 <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('AddCustom')}> 

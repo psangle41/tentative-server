@@ -41,7 +41,7 @@ const Preparingtab=()=>{
             <View style={styles.tabbContainer}>
                 
                 <View style={styles.numberContainer}>
-                    <Text style={{paddingRight:20}}>
+                <Text style={{paddingRight:20,fontSize:18,fontFamily:"Poppins-Light"}}>
                         {item.num}
                     </Text>
                 </View>

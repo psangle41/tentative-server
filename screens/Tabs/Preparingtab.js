@@ -28,14 +28,15 @@ const Preparingtab=()=>{
       }
 
       const renderItem = ({ item }) => {
-        
+        const backgroundColor = item.state === "Prep"? "#f7a500" : item.state === "Ready"?"#00b406":"#e81111";
+
 
         return (
             item.state=="Prep"?
             <View style={styles.tabbContainer}>
                 
                 <View style={styles.numberContainer}>
-                    <Text style={{paddingRight:20}}>
+                <Text style={{paddingRight:20,fontSize:18,fontFamily:"Poppins-Light"}}>
                         {item.num}
                     </Text>
                 </View>
