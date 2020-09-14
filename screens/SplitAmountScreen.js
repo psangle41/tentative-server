@@ -11,9 +11,12 @@ import PersonIcon from './img/personIcon'
 import {CustomerOrder} from './Tabs/CustomerDatabase'
 
 
-const SplitAmountScreen=({navigation})=>{
+const SplitAmountScreen=({route,navigation})=>{
     const [selectedId, setSelectedId] = useState(null);
     let i=0
+    const { abc } = route.params;
+    const { count1 } = route.params;
+    const {totalAmount}= route.params
 
 
     let [fontsLoaded] = useFonts({
@@ -31,21 +34,21 @@ const SplitAmountScreen=({navigation})=>{
                 <View style={{marginTop:windowHeight*0.023,marginHorizontal:windowWidth*0.05,marginBottom:windowHeight*0.02,padding:5}}>
                     <View style={{flex:1,flexDirection:"row", marginBottom:10}}>
                         <PersonIcon/>
-                        <Text style={{paddingLeft:10,fontFamily:"Poppins-Light",fontSize:20,lineHeight:30}}>{item.name}</Text>
+                        <Text style={{paddingLeft:10,fontFamily:"Poppins-Light",fontSize:20,lineHeight:30}}>{item.personName}</Text>
                     </View>
                     <View style={{flex:1,flexDirection:"row",justifyContent:"space-between"}}>
                         <View style={{justifyContent:"center",alignItems:"center"}}>
                             <Text style={styles.titleTextContainer}>Qty</Text>
-                            {item.orderDetails.map((v, i) => (
+                            {item.OrderDetails.map((v, i) => (
                                 <>
-                                <Text style={styles.detailsTextContainer}>{v.id}</Text>            
+                                <Text style={styles.detailsTextContainer}>{v.qty}</Text>            
                                 </>
                             ))}
                             
                         </View>
                         <View style={{justifyContent:"center",alignItems:"center",}}>
                             <Text style={styles.titleTextContainer}>Item</Text>
-                            {item.orderDetails.map((v, i) => (
+                            {item.OrderDetails.map((v, i) => (
                                 <>
                                 <Text style={styles.detailsTextContainer}>{v.Ordername}</Text>            
                                 </>
@@ -54,13 +57,14 @@ const SplitAmountScreen=({navigation})=>{
                         </View>
                         <View style={{justifyContent:"center",alignItems:"center"}}>
                             <Text style={styles.titleTextContainer}>Amount</Text>
-                            {item.orderDetails.map((v, i) => (
+                            {item.OrderDetails.map((v, i) => (
                                 <>
-                                <Text style={styles.detailsTextContainer2}>{v.amount}</Text>            
+                                <Text style={styles.detailsTextContainer2}>${v.amount}</Text>            
                                 </>
                             ))}
                                 
                         </View>
+                        
                     </View>
                 </View>
             </View>
@@ -79,7 +83,7 @@ const SplitAmountScreen=({navigation})=>{
             <Text style={{fontFamily:"Poppins-Light",color:"#000000",fontSize:18,left:20,marginTop:10}}>Order Details</Text>
             <Text style={{fontFamily:"Poppins-Light",color:"#ff264d",fontSize:18,left:20,}}>Table 7</Text>
             <FlatList
-                data={CustomerOrder}
+                data={abc}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 extraData={selectedId}
@@ -92,13 +96,14 @@ const SplitAmountScreen=({navigation})=>{
                     </View>
                     <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                         <Text style={styles.bottomText}>Amount</Text>
-                        <Text style={styles.bottomText2}>$345</Text>
+                        <Text style={styles.bottomText2}>${totalAmount}</Text>
                     </View>
                     <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                         <Text style={styles.bottomText}>Order By</Text>
-                        <Text style={styles.bottomText2}>4 People</Text>
+                        <Text style={styles.bottomText2}>{count1} People</Text>
                     </View>
                 </View>
+                
                 <TouchableOpacity style={styles.billText}>
                     <Text style={{fontFamily:"Poppins-Light",color:"#ffffff",fontSize:22,}}>Bill This</Text>
                 </TouchableOpacity>

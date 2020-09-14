@@ -1,35 +1,39 @@
-export var CustomerOrder=[
+export let CustomerOrder=[
     {   "key":"1",
-        "name": "Jeck Periata",
-        orderDetails: [
-            { "id": '1', "Ordername": 'Cheese Burger', "amount": '$20' },
-            { "id": '2', "Ordername": 'Peri Peri Fries', "amount": '$10' },
-          ],
+        "qty":'1',
+        "Ordername": 'Cheese Burger', 
+        "amount": '$20' ,
+        "checked":false
+
         
     },
     {   "key":"2",
-        "name": "Amy Santiago",
-        orderDetails: [
-            { "id": '1', "Ordername": 'Cheese Burger', "amount": '$20' },
-            { "id": '2', "Ordername": 'Peri Peri Fries', "amount": '$10' },
-          ],
+        "qty":'1',
+        "Ordername": 'Peri Peri Fries', 
+        "amount": '$10' ,
+        "checked":false
+
     },
     {   "key":"3",
-        "name": "Gina Cincinati",
-        orderDetails: [
-            { "id": '1', "Ordername": 'Cheese Burger', "amount": '$20' },
-            { "id": '2', "Ordername": 'Peri Peri Fries', "amount": '$10' },
-          ],
+        "qty":'1',
+        "Ordername": 'Medium Coke', 
+        "amount": '$10' ,
+
+        "checked":false
     },
     {   "key":"4",
-        "name": "Terry Crews",
-        orderDetails: [
-            { "id": '1', "Ordername": 'Cheese Burger', "amount": '$20' },
-            { "id": '2', "Ordername": 'Peri Peri Fries', "amount": '$10' },
-          ],
+        "qty":'1',
+        "Ordername": 'Chocolate ice-creame', 
+        "amount": '$10' ,
+
+        "checked":false
+    },
+    {   "key":"5",
+        "qty":'1',
+        "Ordername": 'Chocolate ice-creame', 
+        "amount": '$10' ,
+
+        "checked":false
     },
 ]
 
-export default {
-    CustomerOrder
-}

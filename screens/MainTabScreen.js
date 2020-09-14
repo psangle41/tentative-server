@@ -32,7 +32,7 @@ const MainTabScreen = ({route}) => {
   <ServerStack.Navigator headerMode='none'>
       <ServerStack.Screen name="home" component={HomeTabs}  initialParams={{isEnabled,isEnabled1,isEnabled2}} />
       <SplitScreenStack.Screen name="Split" component={SplitAmountScreen}/>
-      <AddCustomerStack.screen name="AddCustom" component={AddCustomer} />
+      <AddCustomerStack.Screen name="AddCustom" component={AddCustomer} />
   </ServerStack.Navigator>
   
 )};

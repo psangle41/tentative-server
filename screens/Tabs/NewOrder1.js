@@ -42,7 +42,7 @@ const NewOrder1=()=>{
                 </View>
                 <TouchableOpacity style={styles.texxt}>
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light"}}>{item.name}</Text>
-                    <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
+                    <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}/{item.amount}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('AddCustom')}> 
                         <Arrow/>

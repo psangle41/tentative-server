@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View,FlatList,Dimensions,TouchableOpacity} from 'react-native';
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
+import { useNavigation } from '@react-navigation/native';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import {orderStatus} from './Database'
@@ -12,7 +14,8 @@ import Arrow from '../img/arrow'
 
 
 const All=()=>{
-    
+    const navigation = useNavigation();
+
     const [selectedId, setSelectedId] = useState(null);
     let [fontsLoaded] = useFonts({
         "Poppins-Light": require('../../assets/fonts/Poppins-Light.ttf'),
@@ -44,7 +47,7 @@ const All=()=>{
                     <Text style={{fontSize:18,fontFamily:"Poppins-Light",paddingTop:10}}>{item.code}</Text>
 
                 </TouchableOpacity>
-                <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('Split')}> 
+                <TouchableOpacity style={{marginLeft:windowWidth*0.8,justifyContent:"center"}}  onPress={() => navigation.navigate('AddCustom')}> 
                         <Arrow/>
                 </TouchableOpacity>
                 
